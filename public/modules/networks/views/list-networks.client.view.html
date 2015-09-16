@@ -1,0 +1,19 @@
+<section data-ng-controller="NetworksController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Networks</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="network in networks" data-ng-href="#!/networks/{{network._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="network.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="network.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="network.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!networks.$resolved || networks.length">
+    	No Networks yet, why don't you <a href="/#!/networks/create">create one</a>?
+    </div>
+</section>
