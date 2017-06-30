@@ -20,10 +20,10 @@ Vagrant.configure("2") do |config|
         vb.memory = "1024"
         vb.cpus = 2
     end
-    config.vm.define "Sails" do |node|
+    config.vm.define "MeanJS" do |node|
         node.vm.provision "shell", path: "./bootstrap.sh", privileged: false
         node.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".git/"
         node.vm.network :private_network, :ip => '10.0.1.191'
-        config.vm.network :forwarded_port, guest: 1337, host: 2022
+        config.vm.network :forwarded_port, guest: 3000, host: 3000
     end
 end
